@@ -69,9 +69,9 @@ class AreaList
         $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 	    $request = $objectManager->get('\Magento\Framework\App\Request\Http');
         
-        \Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info('callback wt payload paymongo: '. $request);
+        \Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info('callback wt payload paymongo: '. $request->getOriginalPathInfo());
         
-	    if (strpos($request, 'paymongo/webhooks') !== false)
+	    if (strpos($request->getOriginalPathInfo(), 'paymongo/webhooks') !== false)
             {
             
             \Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info('callback wt payload paymongo: in if clause');
