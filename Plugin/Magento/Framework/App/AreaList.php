@@ -61,6 +61,14 @@ class AreaList
         if ($frontName && in_array($frontName, $frontNamesToSkip)) {
             return $result;
         }
+        
+        $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+	    $request = $objectManager->get('\Magento\Framework\App\Request\Http');
+	    if (strpos($request, 'paymongo/webhooks') !== false)
+            {
+                return $result;
+            }
+        
 
         return 'pwa';
     }
